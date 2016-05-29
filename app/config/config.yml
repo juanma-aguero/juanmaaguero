@@ -6,7 +6,7 @@ imports:
 # Put parameters here that don't need to change on each machine where the app is deployed
 # http://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
-    locale: en
+    locale: es
 
 framework:
     #esi:             ~
@@ -37,6 +37,7 @@ twig:
     strict_variables: "%kernel.debug%"
     globals:
         amulen_version: '@amulen.dashboard.service.setting'
+        amulen_settings: '@amulen.dashboard.service.setting'
     form:
         resources:
             - 'bootstrap_3_horizontal_layout.html.twig'
@@ -100,6 +101,7 @@ flowcode_page:
         default: FlowcodePageBundle:Page:default.html.twig
         documentation: FlowcodePageBundle:Page:docpage.html.twig
         with_well: FlowcodePageBundle:Page:default-well.html.twig
+        home: AppBundle:Themes:juanmaaguero/Template/home.html.twig
 
 
 flowcode_shop:
@@ -185,17 +187,7 @@ ivory_ck_editor:
     configs:
         default:
             filebrowserBrowseRoute: elfinder
-            extraPlugins: "codesnippet"
-    plugins:
-        codesnippet:
-            path:     "/ckeditor/plugins/codesnippet/"
-            filename: "plugin.js"
-        widget:
-            path:     "/ckeditor/plugins/widget/"
-            filename: "plugin.js"
-        lineutils:
-            path:     "/ckeditor/plugins/lineutils/"
-            filename: "plugin.js"
+
 
 services:
     twig.extension.text:

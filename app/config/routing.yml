@@ -83,7 +83,6 @@ amulen_shop:
     prefix:   /
 
 
-
 # your custom bundles routing from here
 app:
     resource: "@AppBundle/Controller/"

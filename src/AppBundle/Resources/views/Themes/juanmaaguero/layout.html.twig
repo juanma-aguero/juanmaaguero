@@ -1,0 +1,61 @@
+{% extends "AppBundle:Themes:juanmaaguero/base.html.twig" %}
+
+{% block wrapper %}
+    <nav class="navbar main-menu navbar-default">
+        <div class="container">
+            <div class="menu-content">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                            data-target="#bs-example-navbar-collapse-1">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="{{ path('home') }}">
+                        <span>
+                            {{ amulen_settings.getValue('site_name') }}
+                        </span>
+                    </a>
+                </div>
+
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+
+                    <ul class="nav navbar-nav text-uppercase">
+                    </ul>
+                    <div class="i_con">
+                        <a href="#"><i class="active fa fa-twitter"></i></a>
+                        <a href="#"><i class="fa fa-facebook"></i></a>
+                        <a href="#"><i class="fa fa-linkedin"></i></a>
+                        <a href="#"><i class="fa fa-instagram"></i></a>
+                    </div>
+
+                </div>
+                <!-- /.navbar-collapse -->
+
+            </div>
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
+
+    <!-- Main -->
+    <div class="main-content">
+        {% block content %}{% endblock %}
+    </div>
+
+    <footer class="footer-widget-section">
+        <div class="footer-copy">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="text-center">
+                            &copy; 2016 Juan Manuel Agüero.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+{% endblock %}

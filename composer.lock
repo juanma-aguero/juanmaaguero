@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "d12155bbfd0b418099336a3b587bad72",
+    "hash": "874b0566aa2fb8c2554e179a2e8b14dd",
     "content-hash": "856f124fb55d354c2727e1e29e42fcea",
     "packages": [
         {
@@ -1157,12 +1157,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/flowcode/AmulenDashboardBundle.git",
-                "reference": "463061732b8f5e840ef1f77e37e4abdb26ce14ea"
+                "reference": "0995cb1c1415b88d506dfa5b585f81b5b3a2f29a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/flowcode/AmulenDashboardBundle/zipball/463061732b8f5e840ef1f77e37e4abdb26ce14ea",
-                "reference": "463061732b8f5e840ef1f77e37e4abdb26ce14ea",
+                "url": "https://api.github.com/repos/flowcode/AmulenDashboardBundle/zipball/0995cb1c1415b88d506dfa5b585f81b5b3a2f29a",
+                "reference": "0995cb1c1415b88d506dfa5b585f81b5b3a2f29a",
                 "shasum": ""
             },
             "require": {
@@ -1197,7 +1197,7 @@
                 "source": "https://github.com/flowcode/AmulenDashboardBundle/tree/master",
                 "issues": "https://github.com/flowcode/AmulenDashboardBundle/issues"
             },
-            "time": "2016-05-29 14:08:20"
+            "time": "2016-05-29 22:51:09"
         },
         {
             "name": "flowcode/amulen-media-bundle",
@@ -1250,12 +1250,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/flowcode/AmulenNewsBundle.git",
-                "reference": "f932c07b0370e9549986c34f0c179341f0511076"
+                "reference": "df90b037142ab2634df4f968838987915c8dfca6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/flowcode/AmulenNewsBundle/zipball/f932c07b0370e9549986c34f0c179341f0511076",
-                "reference": "f932c07b0370e9549986c34f0c179341f0511076",
+                "url": "https://api.github.com/repos/flowcode/AmulenNewsBundle/zipball/df90b037142ab2634df4f968838987915c8dfca6",
+                "reference": "df90b037142ab2634df4f968838987915c8dfca6",
                 "shasum": ""
             },
             "require": {
@@ -1286,7 +1286,7 @@
                 "source": "https://github.com/flowcode/AmulenNewsBundle/tree/master",
                 "issues": "https://github.com/flowcode/AmulenNewsBundle/issues"
             },
-            "time": "2016-05-28 21:00:17"
+            "time": "2016-05-29 22:50:31"
         },
         {
             "name": "flowcode/amulen-page-bundle",

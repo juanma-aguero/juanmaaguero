@@ -84,6 +84,7 @@
     },
     "config": {
         "bin-dir": "bin",
+        "component-dir": "web/assets",
         "platform": {
             "php": "5.5"
         }
