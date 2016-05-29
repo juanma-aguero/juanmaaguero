@@ -1,0 +1,42 @@
+{% extends "AppBundle::frontend.html.twig" %}
+
+{% block body %}
+<div class="main">
+
+    <div class="jumbotron">
+        <h1>Hello!</h1>
+        <p>This is an example...</p>
+        <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a></p>
+    </div>
+
+    <div class="row">
+        <div class="col-md-4">
+            <div class="well">
+                <h3>Front Widget</h3>
+                {{ render(controller('FlowcodeNewsBundle:Post:lasts')) }}
+                <div class="front-widget-footer">
+                    <a class="btn btn-link btn-sm" href="#">More</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="well">
+                <h3>Front widget</h3>
+
+                <div class="front-widget-footer">
+                    <a href="#" class="btn btn-link btn-sm">More</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="well">
+                <h3>Front widget</h3>
+                <div class="front-widget-footer">
+                    <a href="#" class="btn btn-link btn-sm">More</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

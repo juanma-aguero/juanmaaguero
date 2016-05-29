@@ -1,0 +1,120 @@
+{{ '{% extends "' ~ layout ~ '" %}' }}
+
+{{ '{% block title %}' ~ "{{ '%entity% list'|trans({'%entity%': '"~ entity ~"'}, '"~ entity ~"') }} - {{ parent() }}" ~ '{% endblock %}' }}
+
+{%- if withSort %}
+
+{{ "{% macro thead(name, field, label) %}
+    {% spaceless %}
+        {% set sort = app.session.get('sort.' ~ name) %}
+        {% if sort and sort.field == field %}
+            {% if sort.type == 'DESC' %}
+                <a href=\"{{ path('"~ route_name_prefix ~"_sort', {field: field, type: 'ASC'}) }}\">{{ label | trans({},'"~ entity ~"')}} <i class=\"fa fa-sort-down\"></i></a>
+            {% elseif sort.type == 'ASC' %}
+                <a href=\"{{ path('"~ route_name_prefix ~"_sort', {field: field, type: 'DESC'}) }}\">{{ label | trans({},'"~ entity ~"')}} <i class=\"fa fa-sort-up\"></i></a>
+            {% endif %}
+        {% else %}
+            <a href=\"{{ path('"~ route_name_prefix ~"_sort', {field: field, type: 'ASC'}) }}\">{{ label | trans({},'"~ entity ~"')}} <i class=\"fa fa-sort\"></i></a>
+        {% endif %}
+    {% endspaceless %}
+{% endmacro %}" }}
+
+{{ "{% from _self import thead %}" }}
+
+{% endif %}
+
+{{ '{% block ' ~ bodyBlock ~ ' %}' }}
+    <section class="content-header">
+        <h1>
+            {{ "{{ '%entity% list'|trans({'%entity%': '"~ entity ~"'}, '"~ entity ~"') }}" }}
+        </h1>
+    </section>
+    <section class="content">    
+        <div class="box">
+            <div class="box-header">
+                <div class="box-tools pull-right">
+            {%- if 'new' in actions %}
+                    <a class="btn btn-link btn-sm" href={{ "{{ path('"~ route_name_prefix ~"_new') }}" }}>
+                        <i class="fa fa-plus"></i> {{ "{{ 'Create a new %entity%'|trans({'%entity%': '"~ entity ~"'}, '"~ entity ~"') }}" }}
+                    </a>
+            {% endif %}
+            {%- if withFilter %}
+                {{ "{% include '"~ dest_bundle ~":"~ entity ~":filter.html.twig' with {form: form} %}" }}
+            {% endif %}
+                </div>
+            </div>
+            <div class="box-body">    
+            <table class="table table-hover records_list table-condensed">
+                <thead>
+                    <tr>
+                    {%- for field, metadata in fields %}
+                        {%- if field != "id" %}
+                        <th scope="col">
+                        {%- if withSort -%}
+                        {{ "{{ thead('" ~ entity|lower ~"', '"~ field ~"', '"~ field|replace({'_': ' '})|title ~"') }}" }}
+                        {%- else -%}
+                        {{ field|replace({'_': ' '})|title }}
+                        {%- endif -%}
+                        </th>
+                        {%- endif %}
+                    {%- endfor %}
+                    </tr>
+                </thead>
+                <tbody>
+                    {{ '{% for '~ entity|lower ~' in ' ~ (usePaginator ? 'paginator' : 'entities') ~ ' %}' }}
+                        <tr>
+                            {% set showingLink = false %} 
+                    {%- for field, metadata in fields %}
+                        {%- if field != "id" %}
+                            {%- if not showingLink and ('show' in actions) %}
+                                {% set showingLink = true %} 
+                                <td><a href="{{ "{{ path('"~ route_name_prefix ~"_show', {id: "~ entity|lower ~".id}) }}" }}">{{ '{{ '~ entity|lower ~'.'~ field|replace({'_': ''}) ~' }}' }}</a></td>
+
+                            {%- elseif metadata.type == 'date' %}
+
+                                <td>{{ '{% if '~ entity|lower ~'.'~ field|replace({'_': ''}) ~' %}{{ '~ entity|lower ~'.'~ field|replace({'_': ''}) ~'|date(\'Y-m-d\') }}{% endif %}' }}</td>
+
+                            {%- elseif metadata.type == 'datetime' %}
+
+                                <td>{{ '{% if '~ entity|lower ~'.'~ field|replace({'_': ''}) ~' %}{{ '~ entity|lower ~'.'~ field|replace({'_': ''}) ~'|date(\'Y-m-d H:i:s\') }}{% endif %}' }}</td>
+
+                            {%- elseif metadata.type == 'datetimetz' %}
+
+                                <td>{{ '{% if '~ entity|lower ~'.'~ field|replace({'_': ''}) ~' %}{{ '~ entity|lower ~'.'~ field|replace({'_': ''}) ~'|date(\'Y-m-d H:i:s P\') }}{% endif %}' }}</td>
+
+                            {%- elseif metadata.type == 'time' %}
+
+                                <td>{{ '{% if '~ entity|lower ~'.'~ field|replace({'_': ''}) ~' %}{{ '~ entity|lower ~'.'~ field|replace({'_': ''}) ~'|date(\'H:i:s\') }}{% endif %}' }}</td>
+
+                            {%- elseif metadata.type == 'relation_many' or metadata.type == 'array' or metadata.type == 'simple_array' %}
+
+                                <td>{{ '{{ '~ entity|lower ~'.'~ field|replace({'_': ''}) ~'|join(\', \') }}' }}</td>
+
+                            {%- elseif metadata.type == 'boolean' %}
+
+                                <td>{{ '{% if '~ entity|lower ~'.'~ field|replace({'_': ''}) ~' %}<i class="fa fa-check-square-o"></i>{% else %}<i class="fa fa-square-o"></i>{% endif %}' }}</td>
+
+                            {%- else %}
+
+                                <td>{{ '{{ '~ entity|lower ~'.'~ field|replace({'_': ''}) ~' }}' }}</td>
+
+                            {%- endif %}
+                        {%- endif %}
+                    {%- endfor %}
+
+                        </tr>
+                    {{ '{% endfor %}' }}
+                </tbody>
+            </table>
+            {% if usePaginator %}
+
+            {{ '{{ knp_pagination_render(paginator) }}' }}
+            {% endif -%}
+        </div>
+        <div class="box-footer">
+
+        </div>
+        
+    </section>        
+
+{{ '{% endblock %}' }}

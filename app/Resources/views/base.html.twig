@@ -1,0 +1,25 @@
+<!DOCTYPE HTML>
+<html {{ sonata_seo_html_attributes() }} >
+<head {{ sonata_seo_head_attributes() }} >
+    {{ sonata_seo_title() }}
+    {{ sonata_seo_metadatas() }}
+
+    {% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('bundles/app/css/bootstrap.min.css') }}" >
+    <link rel="stylesheet" href="{{ asset('bundles/app/css/amulencms.css') }}" />
+
+    <link rel="stylesheet" href="{{ asset('bundles/app/css/font-awesome.min.css') }}" />
+
+    {% endblock %}
+</head>
+<body>
+
+    {% block wrapper %}{% endblock %}
+
+    {% block javascripts %}
+    <script src="{{ asset('bundles/app/js/jquery.js')}}"></script>
+    <script src="{{ asset('bundles/app/js/bootstrap.min.js') }}"></script>
+    {% endblock %}
+
+</body>
+</html>

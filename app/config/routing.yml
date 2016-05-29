@@ -1,0 +1,90 @@
+
+
+_liip_imagine:
+    resource: "@LiipImagineBundle/Resources/config/routing.xml"
+
+elfinder:
+     resource: "@FMElfinderBundle/Resources/config/routing.yml"
+
+
+
+
+# flowcode routing
+flowcode_user:
+    resource: "@FlowcodeUserBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+flowcode_dashboard:
+    resource: "@FlowcodeDashboardBundle/Resources/config/routing.yml"
+    prefix:   /
+
+flowcode_classification:
+    resource: "@FlowcodeClassificationBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+flowcode_media:
+    resource: "@FlowcodeMediaBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+flowcode_shop:
+    resource: "@FlowcodeShopBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+flowcode_news:
+    resource: "@FlowcodeNewsBundle/Resources/config/routing.yml"
+    prefix:   /
+
+# front page router
+root:
+    path: /
+    defaults:
+        _controller: FrameworkBundle:Redirect:urlRedirect
+        path: /%locale%/
+        permanent: true
+
+flowcode_page:
+    resource: "@FlowcodePageBundle/Controller/"
+    type:     annotation
+    prefix:   /    
+
+# updatable bundles routing
+amulen_page:
+    resource: "@AmulenPageBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+amulen_user:
+    resource: "@AmulenUserBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+amulen_news:
+    resource: "@AmulenNewsBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+amulen_media:
+    resource: "@AmulenMediaBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+amulen_classification:
+    resource: "@AmulenClassificationBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+amulen_shop:
+    resource: "@AmulenShopBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+
+
+# your custom bundles routing from here
+app:
+    resource: "@AppBundle/Controller/"
+    type:     annotation

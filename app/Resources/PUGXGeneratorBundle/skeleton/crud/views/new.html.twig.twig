@@ -1,0 +1,34 @@
+{{ '{% extends "' ~ layout ~ '" %}' }}
+{% if theme %}
+
+{{ "{% form_theme form '"~ theme ~"' %}" }}
+{% endif %}
+
+{{ '{% block title %}' ~ "{{ '%entity% creation'|trans({'%entity%': '"~ entity ~"'}, '"~ entity ~"') }} - {{ parent() }}" ~ '{% endblock %}' }}
+
+{{ '{% block ' ~ bodyBlock ~ ' %}' }}
+    <section class="content-header">
+        <h1>
+            <a href="{{ "{{ path('"~ route_name_prefix ~"') }}" }}"> {{ "{{ '%entity% list'|trans({'%entity%': '"~ entity ~"'}, '"~ entity ~"') }}" }}</a>
+            /
+            {{"{{ '"~entity~"' | trans({}, '"~ entity ~"')}}"}}
+        </h1>
+
+    </section>        
+    <section class="content">
+        <div class="box">
+            <div class="box-body">
+                {{ "{{ form_start(form, {action: path('"~ route_name_prefix ~"_create')}) }}" }}
+                    {{ "{{ form_widget(form) }}" }}
+                    <p>
+                        <button class="btn-default btn" type="submit">{{ "{{ 'save'|trans | capitalize}}" }}</button>
+                    </p>
+                {{ "{{ form_end(form) }}" }}
+            </div>
+            <div class="box-footer">
+            {% set hide_edit, hide_delete,show_delete_popup = true, true, false %}
+            {% include 'crud/views/others/record_actions.html.twig.twig' %}
+            </div>
+        </div>
+    </section>
+{{ '{% endblock %}' }}
