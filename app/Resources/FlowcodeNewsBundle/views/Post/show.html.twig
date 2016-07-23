@@ -6,20 +6,17 @@
             {% set post_url = path('post_show', { 'slug': entity.slug }) %}
             <article class="post">
                 <div class="post-thumb">
-                    <a href="{{ post_url }}">
-                        {% if entity.getImage %}
-                            <img src="{{ asset(entity.getImage.getWebPath | imagine_filter('my_thumb')) }}"
-                                 alt="{{ entity.getImage.name }}">
-                        {% endif %}
-                    </a>
-                    <a href="{{ post_url }}" class="post-thumb-overlay text-center">
-                        <div class="text-uppercase text-center">View Post</div>
-                    </a>
+                    {% if entity.getImage %}
+                        <img src="{{ asset(entity.image | imagine_filter('post_full')) }}"
+                             alt="{{ entity.title }}">
+                    {% endif %}
                 </div>
                 <div class="post-content">
                     <header class="entry-header text-center text-uppercase">
                         <h6>
-                            <a href="#"> Travel</a>
+                            <a href="#">
+                                {{ entity.category }}
+                            </a>
                         </h6>
                         <h1 class="entry-title">
                             <a href="{{ post_url }}">
@@ -31,13 +28,13 @@
                         <p>
                             {{ entity.abstract }}
                         </p>
+                        {{ entity.content|raw }}
 
-                        <div class="btn-continue-reading text-center text-uppercase">
-                            <a href="{{ post_url }}" class="more-link">Continue Reading</a>
-                        </div>
                     </div>
                     <div class="social-share">
-                        <span class="social-share-title pull-left text-capitalize">By <a href="#">Rubel</a> On February 12, 2016</span>
+                        <span class="social-share-title pull-left text-capitalize">
+                            On {{ entity.published|date }}
+                        </span>
                         <ul class="text-center pull-right">
                             <li><a class="s-facebook" href=""><i class="fa fa-facebook"></i></a></li>
                             <li><a class="s-twitter" href=""><i class="fa fa-twitter"></i></a></li>
@@ -53,80 +50,7 @@
         <div class="col-md-4" data-sticky_column>
 
             <div class="primary-sidebar">
-                <aside class="widget">
-                    <h3 class="widget-title text-uppercase text-center">Popular Posts</h3>
-
-                    <div class="popular-post">
-                        <a href="#" class="popular-img"><img src="assets/images/p1.jpg" alt="">
-                            <div class="p-overlay"></div>
-                        </a>
-                        <div class="p-content">
-                            <a href="#" class="text-uppercase">Home is peaceful Place</a>
-                            <span class="p-date">February 15, 2016</span>
-                        </div>
-                    </div>
-                    <div class="popular-post">
-
-                        <a href="#" class="popular-img"><img src="assets/images/p1.jpg" alt="">
-
-                            <div class="p-overlay"></div>
-                        </a>
-
-                        <div class="p-content">
-                            <a href="#" class="text-uppercase">Home is peaceful Place</a>
-                            <span class="p-date">February 15, 2016</span>
-                        </div>
-                    </div>
-                    <div class="popular-post">
-
-
-                        <a href="#" class="popular-img"><img src="assets/images/p1.jpg" alt="">
-
-                            <div class="p-overlay"></div>
-                        </a>
-
-                        <div class="p-content">
-                            <a href="#" class="text-uppercase">Home is peaceful Place</a>
-                            <span class="p-date">February 15, 2016</span>
-                        </div>
-                    </div>
-                </aside>
-
-                <aside class="widget pos-padding">
-                    <h3 class="widget-title text-uppercase text-center">Follow@Instagram</h3>
-
-                    <div class="instragram-follow">
-                        <a href="#">
-                            <img src="assets/images/ins-flow.jpg" alt="">
-                        </a>
-                        <a href="#">
-                            <img src="assets/images/ins-flow.jpg" alt="">
-                        </a>
-                        <a href="#">
-                            <img src="assets/images/ins-flow.jpg" alt="">
-                        </a>
-                        <a href="#">
-                            <img src="assets/images/ins-flow.jpg" alt="">
-                        </a>
-                        <a href="#">
-                            <img src="assets/images/ins-flow.jpg" alt="">
-                        </a>
-                        <a href="#">
-                            <img src="assets/images/ins-flow.jpg" alt="">
-                        </a>
-                        <a href="#">
-                            <img src="assets/images/ins-flow.jpg" alt="">
-                        </a>
-                        <a href="#">
-                            <img src="assets/images/ins-flow.jpg" alt="">
-                        </a>
-                        <a href="#">
-                            <img src="assets/images/ins-flow.jpg" alt="">
-                        </a>
-
-                    </div>
-
-                </aside>
+                {{ include('AppBundle:Themes:juanmaaguero/Widget/profile.html.twig') }}
             </div>
         </div>
 

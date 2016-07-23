@@ -4,19 +4,21 @@
         <div class="post-thumb">
             <a href="{{ post_url }}">
                 {% if entity.getImage %}
-                    <img src="{{ asset(entity.getImage.getWebPath | imagine_filter('my_thumb')) }}"
-                         alt="{{ entity.getImage.name }}">
+                    <img src="{{ asset(entity.image | imagine_filter('post_index')) }}"
+                         alt="{{ entity.title }}">
                 {% endif %}
             </a>
 
             <a href="{{ post_url }}" class="post-thumb-overlay text-center">
-                <div class="text-uppercase text-center">View Post</div>
+                <div class="text-uppercase text-center">Ver</div>
             </a>
         </div>
         <div class="post-content">
             <header class="entry-header text-center text-uppercase">
                 <h6>
-                    <a href="#"> Travel</a>
+                    <a href="#">
+                        {{ entity.category }}
+                    </a>
                 </h6>
                 <h1 class="entry-title">
                     <a href="{{ post_url }}">
@@ -30,11 +32,13 @@
                 </p>
 
                 <div class="btn-continue-reading text-center text-uppercase">
-                    <a href="{{ post_url }}" class="more-link">Continue Reading</a>
+                    <a href="{{ post_url }}" class="more-link">Seguir leyendo</a>
                 </div>
             </div>
             <div class="social-share">
-                <span class="social-share-title pull-left text-capitalize">By <a href="#">Rubel</a> On February 12, 2016</span>
+                <span class="social-share-title pull-left text-capitalize">
+                    On {{ entity.published|date }}
+                </span>
                 <ul class="text-center pull-right">
                     <li><a class="s-facebook" href=""><i class="fa fa-facebook"></i></a></li>
                     <li><a class="s-twitter" href=""><i class="fa fa-twitter"></i></a></li>

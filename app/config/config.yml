@@ -148,6 +148,15 @@ liip_imagine:
             quality: 75
             filters:
                 thumbnail: { size: [500, 200], mode: outbound }
+        post_index:
+            quality: 100
+            filters:
+                thumbnail: { size: [500, 200], mode: outbound }
+
+        post_full:
+            quality: 100
+            filters:
+                thumbnail: { size: [700, 400], mode: outbound }
 
 
 cmf_seo:
@@ -163,6 +172,7 @@ sonata_seo:
                 description:    The open source CMS for modern times.
                 keywords:       cms, open source, symfony, php
                 robots:         index, follow
+                viewport:       width=device-width, initial-scale=1
 
             property:
                 'og:site_name':       Amulen
